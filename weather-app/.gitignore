@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# API keys and sensitive information
+keys.json
+*.key
+*.pem
+
+# Docker-related files
+*.log
+docker-compose.override.yml
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore Terraform and Ansible generated files
+.terraform/
+terraform.tfstate
+*.tfstate.backup
