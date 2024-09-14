@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Previsão do Tempo</h1>
+
+        <form method="POST">
+            <input type="text" name="city" placeholder="Digite o nome da cidade">
+            <button type="submit">Buscar</button>
+        </form>             
+
+        {% if weather %}
+        <div class="weather-info">
+            <h2>Tempo em {{ city }}</h2>
+            <p><strong>Temperatura:</strong> {{ weather.main.temp }} °C</p>
+            <p><strong>Descrição:</strong> {{ weather.weather[0].description }}</p>
+            <p><strong>Humidade:</strong> {{ weather.main.humidity }}%</p>
+            <p><strong>Vento:</strong> {{ weather.wind.speed }} m/s</p>
+        </div>
+        {% else %}
+        <p>Digite uma cidade para ver o clima.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
