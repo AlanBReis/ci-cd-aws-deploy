@@ -1,6 +1,9 @@
 # CI/CD Pipeline para Aplicação Web com Deploy na AWS
 
-Este projeto demonstra a implementação de um pipeline CI/CD para uma aplicação web simples usando Flask ou Express e Docker, com deploy automatizado na AWS utilizando GitHub Actions, Terraform e Ansible. O objetivo é mostrar como automatizar a construção, testes, criação de imagem Docker e deploy, utilizando as melhores práticas de DevOps.
+Este projeto exemplifica a criação de um pipeline CI/CD robusto para uma aplicação web de previsão do tempo, construída com Flask e Docker. Utilizando a API do OpenWeatherMap, a aplicação é totalmente automatizada desde a construção até o deploy. O pipeline inclui integração com GitHub Actions para automação de build e testes, e usa Terraform e Ansible para a configuração e deploy automatizado na AWS. Este projeto visa demonstrar práticas avançadas de DevOps, como criação de imagens Docker, deploy contínuo e integração contínua, aplicando as melhores práticas para garantir uma entrega eficiente e segura.
+
+![imagem do projeto funcionando](images/previsao-tempo.png)
+
 
 ## Funcionalidades
 
