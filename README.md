@@ -18,14 +18,14 @@ Este projeto exemplifica a criação de um pipeline CI/CD robusto para uma aplic
 
 ## Tecnologias Utilizadas
 
-- **Linguagem/Framework**: Flask (Python) ou Express (Node.js)
+- **Linguagem/Framework**: Flask (Python)
 - **Docker**: Para containerização da aplicação
 - **GitHub Actions**: Para automação do pipeline CI/CD
 - **Terraform**: Para provisionamento de infraestrutura como código (EC2, RDS, S3, etc.)
 - **Ansible**: Para automação e configuração de servidores
 - **AWS**:
   - **EC2**: Para hospedar o backend da aplicação
-  - **S3**: (Opcional) Para hospedar o frontend estático
+  - **S3**: Para hospedar o frontend
   - **RDS** ou **DynamoDB**: Para gerenciamento de banco de dados
 - **Notificações**:
   - **Slack** ou **Microsoft Teams**: Para notificações de build e deploy

@@ -4,6 +4,7 @@ __pycache__/
 
 # Environment variables
 .env
+weather-app/.env
 
 # API keys and sensitive information
 keys.json
