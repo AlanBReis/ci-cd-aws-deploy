@@ -2,7 +2,7 @@
 
 Este projeto exemplifica a criação de um pipeline CI/CD robusto para uma aplicação web de previsão do tempo, construída com Flask e Docker. Utilizando a API do OpenWeatherMap, a aplicação é totalmente automatizada desde a construção até o deploy. O pipeline inclui integração com GitHub Actions para automação de build e testes, e usa Terraform e Ansible para a configuração e deploy automatizado na AWS. Este projeto visa demonstrar práticas avançadas de DevOps, como criação de imagens Docker, deploy contínuo e integração contínua, aplicando as melhores práticas para garantir uma entrega eficiente e segura.
 
-![imagem do projeto funcionando](images/previsao-tempo.png)
+![imagem do projeto funcionando](weather-app/images/previsao-tempo.png)
 
 
 ## Funcionalidades
