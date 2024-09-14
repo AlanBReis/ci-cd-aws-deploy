@@ -41,7 +41,7 @@ Certifique-se de ter o Docker, Docker Compose, Terraform e Ansible instalados em
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/ci-cd-aws-deploy.git
+   git clone https://github.com/AlanBReis/ci-cd-aws-deploy
 
 2. Acesse o diretório do projeto:
     ```bash
