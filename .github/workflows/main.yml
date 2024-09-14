@@ -1,0 +1,10 @@
+name: Workflow deploy
+on: workflow_dispatch
+jobs:
+    first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build Docker image
+              run: docker build -t alanzit0x/weather-app .
+            - name: Push Docker image
+              run: docker push alanzit0x/weather-app
