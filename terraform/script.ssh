@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Atualiza pacotes do sistema
+sudo apt-get update
+sudo apt-get upgrade -y
+
+# Instalar Nginx
+sudo apt-get install nginx -y
+
+# Habilitar Nginx para iniciar automaticamente
+sudo systemctl enable nginx
+
+# Configurar o diretório padrão para hospedar a aplicação
+# Pode substituir pelo caminho da sua aplicação, ex: /var/www/html ou clonar um repositório
+sudo rm -rf /var/www/html/*
+sudo git clone https://github.com/AlanBReis/ci-cd-aws-deploy /var/www/html
+
+# Ajustar permissões
+sudo chown -R www-data:www-data /var/www/html
+
+# Reiniciar o Nginx para aplicar as mudanças
+sudo systemctl restart nginx
