@@ -1,8 +1,9 @@
 resource "aws_instance" "tempo-aws" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+  ami           = "ami-0866a3c8686eaeeba"
+  instance_type = "t2.micro"
+  key_name = "devops-bootcamp"
 
   tags = {
-    Name = "HelloWorld"
+    Name = "tempo-aws"
   }
 }
