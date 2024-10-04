@@ -10,9 +10,8 @@ Este projeto exemplifica a criação de um pipeline CI/CD robusto para uma aplic
 ## Funcionalidades
 
 - Automação de build e testes com GitHub Actions
-- Linting e análise de qualidade de código
 - Criação de imagem Docker e push para Docker Hub
-- Deploy automatizado na AWS (EC2, S3, RDS/DynamoDB)
+- Deploy automatizado na AWS (EC2, S3)
 - Provisionamento de infraestrutura com Terraform
 - Configuração de servidores com Ansible
 - Integração com Slack, Microsoft Teams ou e-mail (via SendGrid/AWS SES) para notificações de build e deploy
@@ -23,13 +22,13 @@ Este projeto exemplifica a criação de um pipeline CI/CD robusto para uma aplic
 - **Linguagem/Framework**: Flask (Python)
 - **Docker**: Para containerização da aplicação
 - **GitHub Actions**: Para automação do pipeline CI/CD
-- **Terraform**: Para provisionamento de infraestrutura como código (EC2, S3, etc.)
+- **Terraform**: Para provisionamento de infraestrutura como código (EC2, S3)
 - **Ansible**: Para automação e configuração de servidores
 - **AWS**:
   - **EC2**: Para hospedar o backend da aplicação
   - **S3**: Para hospedar o frontend
 - **Notificações**:
-  - **E-mail**: Integração com SendGrid ou AWS SES
+  - **E-mail**: Integração com AWS SES
 
 ## Como Executar Localmente
 
@@ -69,30 +68,23 @@ O workflow do GitHub Actions executa as seguintes etapas:
 ## O pipeline CI/CD é gerenciado pelo GitHub Actions e executa as seguintes etapas:
 
 1. **Build**: Constrói a aplicação.
-2. **Testes Automatizados**: Executa os testes com pytest (ou outro framework de testes).
-3. **Linting**: Verifica a qualidade do código.
-4. **Criação de Imagem Docker**: Cria a imagem Docker e faz o push para o Docker Hub.
-5. **Provisionamento de Infraestrutura com Terraform**: Cria a infraestrutura na AWS (EC2, RDS/DynamoDB, S3).
-6. **Configuração de Servidores com Ansible**: Configura as instâncias EC2 após provisionadas.
-7. **Deploy Automatizado**: Realiza o deploy da aplicação nas instâncias EC2.
-8. **Notificações**: Envia notificações para Slack, Teams ou e-mail.
+2. **Criação de Imagem Docker**: Cria a imagem Docker e faz o push para o Docker Hub.
+3. **Provisionamento de Infraestrutura com Terraform**: Cria a infraestrutura na AWS (EC2,S3).
+4. **Configuração de Servidores com Ansible**: Configura as instâncias EC2 após provisionadas.
+5. **Deploy Automatizado**: Realiza o deploy da aplicação nas instâncias EC2.
+6. **Notificações**: Envia notificações para Slack, Teams ou e-mail.
 
 Para ver o arquivo completo do workflow, [clique aqui](D:\PROGRAMMER\ci-cd-aws-deploy\.github\workflows\main.yml).
 
 
 ## Deploy na AWS
 1. **EC2:** A aplicação backend será hospedada em uma instância EC2. O deploy automatizado é feito através do pipeline CI/CD do GitHub Actions, com infraestrutura provisionada por Terraform e configurada por Ansible.
-2. **RDS/DynamoDB:** O banco de dados pode ser configurado usando o AWS RDS (relacional) ou DynamoDB (NoSQL), de acordo com as necessidades da aplicação.
-3. **S3:** Para hospedar o frontend.
+2. **S3:** Para hospedar o frontend.
 
 ## Notificações
-As notificações podem ser enviadas para diferentes plataformas:
+As notificações podem ser enviadas para a plataforma:
 
-Slack: Notifica o status da build e deploy em um canal do Slack.
-Microsoft Teams: Notificações semelhantes para o Teams.
 E-mail: Configurado através de serviços como SendGrid ou AWS SES para enviar atualizações sobre o pipeline por e-mail.
-Testes de Segurança
-Testes de segurança são uma parte importante do pipeline CI/CD. Utilize ferramentas como OWASP ZAP ou Snyk para verificar vulnerabilidades na aplicação.
 
 ## Como Contribuir
 1. Fork o projeto.
