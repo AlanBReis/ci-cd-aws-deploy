@@ -4,6 +4,8 @@ resource "aws_instance" "tempo-aws" {
   key_name      = "devops-bootcamp"
 
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]  # Referência ao ID do SG
+  
+  # Referência ao script externo para inicialização
   user_data = file("script.ssh")
 
   tags = {

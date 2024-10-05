@@ -1,22 +1,60 @@
 #!/bin/bash
-
 # Atualiza pacotes do sistema
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get upgrade -y
 
-# Instalar Nginx
+# Instala Nginx e dependências do Python
 sudo apt-get install nginx -y
+sudo apt-get install python3 python3-pip -y
 
-# Habilitar Nginx para iniciar automaticamente
-sudo systemctl enable nginx
+# Instala o Flask
+pip3 install Flask
 
-# Configurar o diretório padrão para hospedar a aplicação
-# Pode substituir pelo caminho da sua aplicação, ex: /var/www/html ou clonar um repositório
-sudo rm -rf /var/www/html/*
-sudo git clone https://github.com/AlanBReis/ci-cd-aws-deploy /var/www/html
+# Copia os arquivos da aplicação para o diretório do Nginx
+sudo mkdir -p /var/www/html/weather-app
+sudo cp -R /var/www/html/weather-app
 
-# Ajustar permissões
-sudo chown -R www-data:www-data /var/www/html
+# Ajusta as permissões
+sudo chown -R www-data:www-data /var/www/html/weather-app
 
-# Reiniciar o Nginx para aplicar as mudanças
+# Cria um socket para a aplicação Flask
+cat <<EOF | sudo tee /etc/systemd/system/weather-app.service
+[Unit]
+Description=uWSGI instance to serve weather-app
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/html/weather-app
+Environment="PATH=/var/www/html/weather-app/venv/bin"
+ExecStart=/usr/local/bin/uwsgi --ini weather-app.ini
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Configura o Nginx para servir a aplicação
+cat <<EOF | sudo tee /etc/nginx/sites-available/weather-app
+server {
+    listen 80;
+    server_name your_public_ip;  # Substitua pelo IP público da sua instância EC2
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/var/www/html/weather-app/weather-app.sock;
+    }
+}
+EOF
+
+# Ativa o novo site e desativa o site padrão do Nginx
+sudo ln -s /etc/nginx/sites-available/weather-app /etc/nginx/sites-enabled
+sudo unlink /etc/nginx/sites-enabled/default
+
+# Reinicia o Nginx e habilita a aplicação
 sudo systemctl restart nginx
+sudo systemctl start weather-app
+sudo systemctl enable weather-app
+
+# Verifica os logs do Nginx
+tail -f /var/log/nginx/error.log

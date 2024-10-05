@@ -1,7 +1,7 @@
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "permitir acesso remoto via ssh"
-#   vpc_id      = "vpc-12345678" # Substitua pelo ID do VPC
+  vpc_id      = "vpc-01fba5ca6d3f8afce" 
 
   # Regras de entrada (Ingress Rules)
   ingress {
@@ -17,7 +17,7 @@ resource "aws_security_group" "allow_ssh" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]  # Permite tráfego SSH de qualquer lugar (não recomendado em produção)
+    cidr_blocks      = ["0.0.0.0/0"]  # Permite tráfego SSH de qualquer lugar 
   }
 
   # Regras de saída (Egress Rules)
