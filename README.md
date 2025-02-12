@@ -13,9 +13,7 @@ Este projeto exemplifica a criação de um pipeline CI/CD robusto para uma aplic
 - Criação de imagem Docker e push para Docker Hub
 - Deploy automatizado na AWS (EC2, S3)
 - Provisionamento de infraestrutura com Terraform
-- Configuração de servidores com Ansible
-- Integração com Slack, Microsoft Teams ou e-mail (via SendGrid/AWS SES) para notificações de build e deploy
-- Testes de segurança automatizados
+- Integração com Slack, Microsoft Teams ou e-mail (via AWS SES) para notificações de build e deploy
 
 ## Tecnologias Utilizadas
 
@@ -25,9 +23,8 @@ Este projeto exemplifica a criação de um pipeline CI/CD robusto para uma aplic
 - **Terraform**: Para provisionamento de infraestrutura como código (EC2, S3)
 - **Ansible**: Para automação e configuração de servidores
 - **AWS**:
-  - **EC2**: Para hospedar o backend da aplicação
-  - **S3**: Para hospedar o frontend
-- **Notificações**:
+  - **EC2**: 
+  - **S3**: 
   - **E-mail**: Integração com AWS SES
 
 ## Como Executar Localmente
@@ -78,8 +75,8 @@ Para ver o arquivo completo do workflow, [clique aqui](D:\PROGRAMMER\ci-cd-aws-d
 
 
 ## Deploy na AWS
-1. **EC2:** A aplicação backend será hospedada em uma instância EC2. O deploy automatizado é feito através do pipeline CI/CD do GitHub Actions, com infraestrutura provisionada por Terraform e configurada por Ansible.
-2. **S3:** Para hospedar o frontend.
+1. **EC2:** A aplicação backend será hospedada em uma instância EC2. O deploy automatizado é feito através do pipeline CI/CD do GitHub Actions, com infraestrutura provisionada pelo Terraform.
+2. **S3:** 
 
 ## Notificações
 As notificações podem ser enviadas para a plataforma:
